@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+<style media="screen">
+
+.gone{
+display: none;
+
+}
+
+li{
+font-size: 20px;
+
+}
+
+</style>
+
+
+</head>
+<body>
+
+<h3>Input a name :</h3>
+<button type="button" name="button" onclick="buttonPress()">CLIK ME</button>
+
+<input type="text" name="" value="" id="input" class="toBeChecked">
+<h4>click a name to delete.</h4>
+<h3>List of names:</h3>
+
+<script type="text/javascript">
+
+
+var toBeChecked = document.querySelector(".toBeChecked")
+toBeChecked.addEventListener("keyup",function() {
+  if (event.keyCode === 13) {
+
+    var input= document.getElementById("input").value;
+
+    var newHeader = document.createElement("li")
+    newHeader.className = "test";
+    newHeader.id = "delete"
+    document.body.appendChild(newHeader)
+    newHeader.innerHTML = input ;
+
+    newHeader.addEventListener('click',function functionName() {
+      newHeader.style.cssText = "display:none;";
+    })
+
+  }
+
+})
+
+function buttonPress() {
+
+
+  var input= document.getElementById("input").value;
+
+  var newHeader = document.createElement("li")
+  newHeader.className = "test";
+  newHeader.id = "delete"
+  document.body.appendChild(newHeader)
+  newHeader.innerHTML = input ;
+
+  newHeader.addEventListener('click',function functionName() {
+    newHeader.style.cssText = "display:none;";
+  })
+
+}
+
+
+
+
+
+</script>
+
+</body>
+</html>

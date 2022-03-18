@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <div class="center" align="center">
+      <form action="swipe.html" method="POST" align="center">
+
+
+        <h1>Login</h1>
+        <div class="inside">
+          <label for="username">Username:</label>
+          <input type="text" name="username" placeholder="Username">
+          <span></span>
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input type="password" name="password" placeholder="Password">
+          <span></span>
+        </div>
+        <button id="log-in">Log-in</button>
+      </form>
+
+    </div>
+<style>
+
+body{
+  background-color:gray;
+}
+  .center {
+position: relative;
+top: 15vh;
+
+  }
+
+  h1{
+position: relative;
+top:30px;
+font-family: 'dubai',sans-serif;
+letter-spacing: 1px;
+font-size: 36px;
+color:white;
+
+  }
+
+    form{
+    			width: 400px;
+    			/* margin: 200px auto; */
+          background-color: rgba(0, 0, 0, 0.5);
+    		}
+    		div{
+    			width: 100%;
+    			margin: 15px auto;
+    		}
+    		label{
+    			display: block;
+    			padding: 20px;
+    			font-size: 25px;
+          font-family: 'dubai',sans-serif;
+          color:white;
+    		}
+    		input{
+    			width: 85%;
+    			padding: 10px;
+    			border: 1px solid #797979;
+    			margin-left: 20px;
+    			font-size: 20px;
+    			border-radius: 3px;
+    		}
+    		button{
+    			margin: 20px;
+    		    padding: 10px;
+    		    width: 100px;
+    		    border: none;
+    		    outline: none;
+    		    cursor: pointer;
+    		    border-radius: 5px;
+    		    background: rgb(181,181,181);
+    		    font-size: 20px;
+    		    font-weight: bold;
+    		    color: whitesmoke;
+    		}
+    		span{
+    			display: block;
+    		    margin-left: 20px;
+    		    color: red;
+    		    font-style: italic;
+    		}
+
+        </style>
+
+  <script type="text/javascript">
+
+  window.onload = ()=>{
+  this.sessionStorage.setItem('username', 'admin');
+  this.sessionStorage.setItem('password', 'admin');
+}
+
+var input = document.getElementsByTagName('input');
+var login = document.getElementById('log-in');
+var form = document.querySelector('form');
+form.onsubmit = ()=>{return false;}
+
+login.onclick = ()=>{
+
+  if ((input[0].value != "") && (input[1].value != ""))
+   {
+    if ((input[0].value == sessionStorage.getItem('username')) && (input[1].value == sessionStorage.getItem('password')))
+     {
+      form.onsubmit = ()=>{return 1;}
+        document.cookie = "username="+input[0].value;
+        document.cookie = "password="+input[1].value;
+     }
+     else
+     {
+      if ((input[0].value != sessionStorage.getItem('username')) )
+       {
+        input[0].nextElementSibling.textContent = "Username NOT match";
+        setTimeout(()=>{
+          input[0].nextElementSibling.textContent = "";
+        }, 2000);
+
+       }
+       if ((input[1].value != sessionStorage.getItem('password')) )
+       {
+        input[1].nextElementSibling.textContent = "Password NOT match";
+        setTimeout(()=>{
+          input[1].nextElementSibling.textContent = "";
+        }, 2000);
+
+       }
+
+     }
+
+   }
+  else
+   {
+    if (input[0].value == "")
+    {
+      input[0].nextElementSibling.textContent = "Username is empty";
+      setTimeout(()=>{
+        input[0].nextElementSibling.textContent = "";
+      }, 2000);
+    }
+    if (input[1].value == "")
+    {
+      input[1].nextElementSibling.textContent = "Password is empty";
+      setTimeout(()=>{
+        input[1].nextElementSibling.textContent = "";
+      }, 2000);
+    }
+   }
+}
+  </script>
+
+  </body>
+</html>
